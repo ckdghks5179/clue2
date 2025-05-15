@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Clue;
+using clue_game6;
 
-namespace Clue
+namespace clue_game6
 {
     public partial class PlayerChoose : Form
     {

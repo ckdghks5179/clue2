@@ -1,4 +1,4 @@
-﻿namespace Clue
+﻿namespace clue_game6
 {
     partial class PlayerChoose
     {
