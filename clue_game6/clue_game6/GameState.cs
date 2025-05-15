@@ -23,6 +23,8 @@ namespace Clue
         public bool isAlive = true;
         public bool isTurn = false;
         public bool isInRoom = false;
+
+
     }
 
 
