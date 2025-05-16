@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using clue_game6;
 
 
 //https://github.com/ckdghks5179/clue_game
 //https://github.com/ckdghks5179/clue_game.git
 
 
-namespace Clue
+namespace clue_game6
 {
 
 
@@ -24,6 +25,7 @@ namespace Clue
     public partial class Form1 : Form
     {
         Form2 notePad;
+        Form3 suggest;
 
         private GameState gameState;
         private int playerId;
@@ -291,5 +293,23 @@ namespace Clue
             notePad = new Form2();
             notePad.Show();
         }
+
+        private void btnSug_Click(object sender, EventArgs e)
+        {
+            suggest = new Form3(gameState,player,1);
+            suggest.Show();
+        }
+
+        private void btnFinalSug_Click(object sender, EventArgs e)
+        {
+            suggest = new Form3(gameState, player, 2);
+            suggest.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = player.clueBox[0] +"가"+ player.clueBox[1] +"에서"+ player.clueBox[2]+"으로 죽였다.";
+        }
     }
-}
+ }
+

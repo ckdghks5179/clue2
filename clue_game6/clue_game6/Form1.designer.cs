@@ -1,4 +1,4 @@
-﻿namespace Clue
+﻿namespace clue_game6
 {
     partial class Form1
     {
@@ -44,6 +44,8 @@
             this.btnNote = new System.Windows.Forms.Button();
             this.btnSug = new System.Windows.Forms.Button();
             this.btnFinalSug = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).BeginInit();
@@ -52,7 +54,7 @@
             // btnRoll
             // 
             this.btnRoll.Location = new System.Drawing.Point(510, 348);
-            this.btnRoll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRoll.Margin = new System.Windows.Forms.Padding(2);
             this.btnRoll.Name = "btnRoll";
             this.btnRoll.Size = new System.Drawing.Size(87, 36);
             this.btnRoll.TabIndex = 0;
@@ -63,7 +65,7 @@
             // btnTurnEnd
             // 
             this.btnTurnEnd.Location = new System.Drawing.Point(510, 394);
-            this.btnTurnEnd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTurnEnd.Margin = new System.Windows.Forms.Padding(2);
             this.btnTurnEnd.Name = "btnTurnEnd";
             this.btnTurnEnd.Size = new System.Drawing.Size(87, 36);
             this.btnTurnEnd.TabIndex = 1;
@@ -85,7 +87,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(7, 6);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(478, 400);
             this.pictureBox1.TabIndex = 4;
@@ -104,7 +106,7 @@
             // btnUp
             // 
             this.btnUp.Location = new System.Drawing.Point(690, 320);
-            this.btnUp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUp.Margin = new System.Windows.Forms.Padding(2);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(30, 38);
             this.btnUp.TabIndex = 6;
@@ -115,7 +117,7 @@
             // btnDown
             // 
             this.btnDown.Location = new System.Drawing.Point(690, 401);
-            this.btnDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDown.Margin = new System.Windows.Forms.Padding(2);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(30, 38);
             this.btnDown.TabIndex = 7;
@@ -126,7 +128,7 @@
             // btnRight
             // 
             this.btnRight.Location = new System.Drawing.Point(726, 366);
-            this.btnRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRight.Margin = new System.Windows.Forms.Padding(2);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(43, 26);
             this.btnRight.TabIndex = 8;
@@ -137,7 +139,7 @@
             // btnLeft
             // 
             this.btnLeft.Location = new System.Drawing.Point(638, 366);
-            this.btnLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLeft.Margin = new System.Windows.Forms.Padding(2);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(44, 26);
             this.btnLeft.TabIndex = 9;
@@ -159,7 +161,7 @@
             // 
             this.player1.Image = ((System.Drawing.Image)(resources.GetObject("player1.Image")));
             this.player1.Location = new System.Drawing.Point(5, 5);
-            this.player1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.player1.Margin = new System.Windows.Forms.Padding(2);
             this.player1.Name = "player1";
             this.player1.Size = new System.Drawing.Size(13, 12);
             this.player1.TabIndex = 11;
@@ -169,7 +171,7 @@
             // 
             this.player2.Image = ((System.Drawing.Image)(resources.GetObject("player2.Image")));
             this.player2.Location = new System.Drawing.Point(393, 250);
-            this.player2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.player2.Margin = new System.Windows.Forms.Padding(2);
             this.player2.Name = "player2";
             this.player2.Size = new System.Drawing.Size(13, 12);
             this.player2.TabIndex = 12;
@@ -178,7 +180,7 @@
             // btnNote
             // 
             this.btnNote.Location = new System.Drawing.Point(516, 30);
-            this.btnNote.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNote.Margin = new System.Windows.Forms.Padding(2);
             this.btnNote.Name = "btnNote";
             this.btnNote.Size = new System.Drawing.Size(94, 30);
             this.btnNote.TabIndex = 13;
@@ -189,29 +191,50 @@
             // btnSug
             // 
             this.btnSug.Location = new System.Drawing.Point(516, 88);
-            this.btnSug.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSug.Margin = new System.Windows.Forms.Padding(2);
             this.btnSug.Name = "btnSug";
             this.btnSug.Size = new System.Drawing.Size(94, 30);
             this.btnSug.TabIndex = 14;
             this.btnSug.Text = "Suggest";
             this.btnSug.UseVisualStyleBackColor = true;
+            this.btnSug.Click += new System.EventHandler(this.btnSug_Click);
             // 
             // btnFinalSug
             // 
             this.btnFinalSug.ForeColor = System.Drawing.Color.Red;
             this.btnFinalSug.Location = new System.Drawing.Point(516, 151);
-            this.btnFinalSug.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFinalSug.Margin = new System.Windows.Forms.Padding(2);
             this.btnFinalSug.Name = "btnFinalSug";
             this.btnFinalSug.Size = new System.Drawing.Size(111, 42);
             this.btnFinalSug.TabIndex = 15;
             this.btnFinalSug.Text = "Final\r\nSuggest";
             this.btnFinalSug.UseVisualStyleBackColor = true;
+            this.btnFinalSug.Click += new System.EventHandler(this.btnFinalSug_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 440);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(344, 21);
+            this.textBox1.TabIndex = 16;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(377, 440);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 512);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnFinalSug);
             this.Controls.Add(this.btnSug);
             this.Controls.Add(this.btnNote);
@@ -227,7 +250,7 @@
             this.Controls.Add(this.dice1);
             this.Controls.Add(this.btnTurnEnd);
             this.Controls.Add(this.btnRoll);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -256,6 +279,8 @@
         private System.Windows.Forms.Button btnNote;
         private System.Windows.Forms.Button btnSug;
         private System.Windows.Forms.Button btnFinalSug;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

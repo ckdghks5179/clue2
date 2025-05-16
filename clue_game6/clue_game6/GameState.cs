@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clue
+namespace clue_game6
 {
 
 
@@ -23,13 +23,14 @@ namespace Clue
         public bool isAlive = true;
         public bool isTurn = false;
         public bool isInRoom = false;
+        public string[] clueBox = { "", "", "" }; //추리 저장 배열
     }
 
 
     public class Card
     {
-        string type; //player, weapon, room
-        string name;
+        public string type; //player, weapon, room
+        public string name;
 
         public Card(string type, string name)
         {

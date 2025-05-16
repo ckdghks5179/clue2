@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Clue
+namespace clue_game6
 {
     internal static class Program
     {
