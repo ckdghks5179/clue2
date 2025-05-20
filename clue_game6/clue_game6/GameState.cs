@@ -24,6 +24,9 @@ namespace clue_game6
         public bool isTurn = false;
         public bool isInRoom = false;
         public string[] clueBox = { "", "", "" }; //추리 저장 배열
+        public bool[] manBox = new bool[6];
+        public bool[] weaponBox = new bool[6];
+        public bool[] roomBox = new bool[9];
     }
 
 
