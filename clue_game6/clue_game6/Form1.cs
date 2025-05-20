@@ -290,7 +290,7 @@ namespace clue_game6
 
         private void btnNote_Click(object sender, EventArgs e)
         {
-            notePad = new Form2();
+            notePad = new Form2(player,gameState);
             notePad.Show();
         }
 
