@@ -81,6 +81,8 @@ namespace clue_game6
             gameState.InitializeCards(); //카드 초기화 및 봉투에 정답 카드 넣기
             gameState.distributeCards(); //카드 나눠주기
 
+            gameState.initializeNote(); //노트 초기화
+
             for (int i = 0; i < playerCount; i++)
             {
                 Form1 form = new Form1(gameState, i);

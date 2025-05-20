@@ -24,6 +24,7 @@ namespace clue_game6
         public bool isTurn = false;
         public bool isInRoom = false;
         public string[] clueBox = { "", "", "" }; //추리 저장 배열
+
         public bool[] manBox = new bool[6];
         public bool[] weaponBox = new bool[6];
         public bool[] roomBox = new bool[9];
@@ -55,8 +56,15 @@ namespace clue_game6
 
     }
 
-    public class GameState
+    public class PlayerNoteData
     {
+        public bool[] SuspectChecks = new bool[6]; // Green ~ White
+        public bool[] WeaponChecks = new bool[6];  // 촛대 ~ 렌치
+        public bool[] RoomChecks = new bool[9];    // 9개 방
+    }
+
+        public class GameState
+        {
 
             public int[,] clue_map = new int[,]
             {
@@ -102,6 +110,15 @@ namespace clue_game6
 
         public int CurrentY { get; set; } = 0;
 
+        public Dictionary<int, PlayerNoteData> PlayerNotes = new Dictionary<int, PlayerNoteData>();
+
+        public void initializeNote()
+        {
+            for (int i = 0; i < Players.Length; i++)
+            {
+                PlayerNotes[i] = new PlayerNoteData();
+            }
+        }
 
         public void AdvanceTurn()
         {
@@ -126,9 +143,9 @@ namespace clue_game6
 
             //정답 카드 생성, 봉투에 넣기
             Random rand = new Random();
-            answer[0] = new Card(types[0], man[rand.Next(0, man.Length + 1)]);
-            answer[1] = new Card(types[1], weapon[rand.Next(0, weapon.Length + 1)]);
-            answer[2] = new Card(types[2], room[rand.Next(0, room.Length + 1)]);
+            answer[0] = new Card(types[0], man[rand.Next(0, man.Length)]);
+            answer[1] = new Card(types[1], weapon[rand.Next(0, weapon.Length)]);
+            answer[2] = new Card(types[2], room[rand.Next(0, room.Length)]);
 
             //나머지 카드를 덱에 삽입
             for (int i = 0; i < types.Length; i++)

@@ -14,19 +14,19 @@ namespace clue_game6
     {
         GameState gameState;
         Player player;
-        public Form2(Player p,GameState G)
+        public Form2(Player p, GameState G)
         {
             InitializeComponent();
             player = p;
             gameState = G;
             openForm2(p, G);
         }
-        public void openForm2(Player p , GameState G)
+        public void openForm2(Player p, GameState G)
         {
-            for(int i =0 ;i<player.manBox.Length;i++)
+            for (int i = 0; i < player.manBox.Length; i++)
             {
                 if (player.manBox[i] == true)
-                    manListBox.SetItemChecked(i,true);
+                    manListBox.SetItemChecked(i, true);
                 else
                     manListBox.SetItemChecked(i, false);
             }
@@ -49,7 +49,7 @@ namespace clue_game6
 
             for (int i = 0; i < 4; i++)
             {
-                if (player.roomBox[i+5] == true)
+                if (player.roomBox[i + 5] == true)
                     roomListBox2.SetItemChecked(i, true);
                 else
                     roomListBox2.SetItemChecked(i, false);
@@ -81,9 +81,9 @@ namespace clue_game6
             for (int i = 0; i < roomListBox2.Items.Count; i++)
             {
                 if (roomListBox2.GetItemChecked(i))
-                    player.roomBox[i+5] = true;
+                    player.roomBox[i + 5] = true;
                 else
-                    player.roomBox[i+5] = false;
+                    player.roomBox[i + 5] = false;
             }
         }
 
