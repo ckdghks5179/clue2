@@ -66,8 +66,8 @@ namespace clue_game6
             btnRoll.Enabled = isMyTurn;
             btnTurnEnd.Enabled = isMyTurn;
 
-            btnSug.Enabled = isMyTurn && player.isInRoom;
-
+            btnFinalSug.Enabled = false;
+            btnSug.Enabled = false;
             /* btnUp.Enabled = isMyTurn;
              btnDown.Enabled = isMyTurn;
              btnLeft.Enabled = isMyTurn;
@@ -95,7 +95,15 @@ namespace clue_game6
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Text = $"Clue Game - Player {playerId + 1} ({player.name})";
-
+            for(int i =0;i < player.hands.Count(); i++)
+            {
+                textBox2.Text += "<" + player.hands[i].type + ">" + " " + player.hands[i].name + "\r\n";
+            }
+            textBox2.Text += "-----public card------\r\n";
+            for (int i =0; i< gameState.openCard.Count();i++)
+            {
+                textBox2.Text += "<" + gameState.openCard[i].type + ">" + " " + gameState.openCard[i].name + "\r\n";
+            }
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             for (int i = 0; i < gameState.TotalPlayers; i++)
             {
@@ -152,8 +160,15 @@ namespace clue_game6
             if (gameState.clue_map[newX, newY] == 2) //방에 들어온 경우 이동횟수 모두 소모
             {
                 player.isInRoom = true;
+                btnSug.Enabled = player.isInRoom;
                 lbRemain.Text = "1";
-            }   
+            }
+            else if(gameState.clue_map[newX, newY] == 5)
+            {
+                player.isFinalRoom = true;
+                btnFinalSug.Enabled = player.isFinalRoom;
+                lbRemain.Text = "1";
+            }
             else
                 player.isInRoom = false;
 
@@ -163,15 +178,18 @@ namespace clue_game6
                 gameState.clue_map[player.x, player.y] = 2;
             }
             else
-                gameState.clue_map[player.x, player.y] = 0;
+                gameState.clue_map[player.x, player.y] = 0;  //why??
 
             player.x = newX;
             player.y = newY;
-            gameState.clue_map[newX, newY] = 3;
+            gameState.clue_map[newX, newY] = 3; //why??
             playerBoxes[playerId].Location = gameState.clue_map_point[newX, newY];
             lbRemain.Text = (int.Parse(lbRemain.Text) - 1).ToString();
 
-            UpdateControlState();
+            foreach (var form in PlayerChoose.AllPlayerForms)
+            {
+                form.UpdatePlayerPositions(); //수정
+            }
         }
 
 
@@ -222,19 +240,20 @@ namespace clue_game6
 
         private void btnSug_Click(object sender, EventArgs e)
         {
-            suggest = new Form3(gameState,player,1);
+            suggest = new Form3(gameState, player, 1, playerId);
             suggest.Show();
         }
 
         private void btnFinalSug_Click(object sender, EventArgs e)
         {
-            suggest = new Form3(gameState, player, 2);
+            suggest = new Form3(gameState, player, 2, playerId);
             suggest.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox1.Text = player.clueBox[0] +"가 "+ player.clueBox[1] +"에서 "+ player.clueBox[2]+"으로 죽였다.";
+            suggest = new Form3(gameState, player, 3, playerId);
+            suggest.Show();
         }
     }
  }
