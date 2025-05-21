@@ -23,6 +23,7 @@ namespace clue_game6
         public bool isAlive = true;
         public bool isTurn = false;
         public bool isInRoom = false;
+        public bool isFinalRoom = false;
         public string[] clueBox = { "", "", "" }; //추리 저장 배열
 
         public bool[] manBox = new bool[6];
@@ -78,13 +79,13 @@ namespace clue_game6
                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 1, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0},
                 { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1},
                 { 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 1, 1, 1},
-                { 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 2, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1},
+                { 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 5, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1},
                 { 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1},
                 { 1, 1, 1, 4, 1, 1, 1, 2, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 2, 1},
-                { 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 2, 1, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                { 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 5, 1, 4, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 { 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 2, 1, 1, 1},
                 { 1, 1, 1, 1, 1, 1, 2, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1},
-                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 1, 1, 0, 0, 2, 1, 1, 1, 1, 1, 1},
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 5, 1, 1, 0, 0, 2, 1, 1, 1, 1, 1, 1},
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1},
                 { 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1},
                 { 1, 1, 1, 1, 1, 2, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -105,7 +106,6 @@ namespace clue_game6
 
         public int CurrentTurn { get; set; } = 0;
         public Point[,] clue_map_point { get; set; }
-
         public int CurrentX { get; set; } = 0;
 
         public int CurrentY { get; set; } = 0;
@@ -141,6 +141,7 @@ namespace clue_game6
             string[] weapon = { "촛대", "파이프", "리볼버", "밧줄", "렌치", "단검" };
             string[] room = { "주방", "공부방", "무도회장", "온실", "식당", "당구장", "서재", "라운지", "홀" };
 
+            List<string[]> listDeck = new List<string[]> { man, weapon, room };
             //정답 카드 생성, 봉투에 넣기
             Random rand = new Random();
             answer[0] = new Card(types[0], man[rand.Next(0, man.Length)]);
@@ -150,16 +151,15 @@ namespace clue_game6
             //나머지 카드를 덱에 삽입
             for (int i = 0; i < types.Length; i++)
             {
-                foreach (string temp in types)
+                foreach (string temp in listDeck[i])
                 {
                     if (temp != answer[i].Name)
                         Deck.Add(new Card(types[i], temp));
                 }
-            }
+            }//카드 할당 오류 수정
 
-            //카드 섞기
-            Random random = new Random();
-            Deck = Deck.OrderBy(x => random.Next()).ToList();
+            
+            Deck = Deck.OrderBy(x => rand.Next()).ToList();
         }
 
         public void distributeCards() //카드 분배
@@ -167,8 +167,8 @@ namespace clue_game6
             int playerCount = Players.Length;
             int cardCount = Deck.Count;
             int cardsPerPlayer = cardCount / playerCount; //나눠줘야 할 카드 수
-
-            for(int i = 0; i < playerCount; i++)
+            int  restCard = cardCount % playerCount; //나눠줘야 할 카드 수
+            for (int i = 0; i < playerCount; i++)
             {
                 Players[i].hands = new List<Card>();
                 for (int j = 0; j < cardsPerPlayer; j++)
