@@ -20,6 +20,7 @@ namespace clue_game6
         public int x; //열
         public int y; //행
 
+
         public bool isAlive = true;
         public bool isTurn = false;
         public bool isInRoom = false;
