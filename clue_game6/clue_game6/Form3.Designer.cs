@@ -52,7 +52,7 @@
             this.manBox.Name = "manBox";
             this.manBox.Size = new System.Drawing.Size(221, 32);
             this.manBox.TabIndex = 0;
-            this.manBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectionChanged);
+            //this.manBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectionChanged);
             // 
             // roomBox
             // 
@@ -72,7 +72,7 @@
             this.roomBox.Name = "roomBox";
             this.roomBox.Size = new System.Drawing.Size(221, 32);
             this.roomBox.TabIndex = 1;
-            this.roomBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectionChanged);
+            //this.roomBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectionChanged);
             // 
             // weaponBox
             // 
@@ -89,7 +89,7 @@
             this.weaponBox.Name = "weaponBox";
             this.weaponBox.Size = new System.Drawing.Size(221, 32);
             this.weaponBox.TabIndex = 2;
-            this.weaponBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectionChanged);
+            //this.weaponBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectionChanged);
             // 
             // label1
             // 
@@ -146,7 +146,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Form3";
             this.Text = "Form3";
-            this.Load += new System.EventHandler(this.Form3_Load);
+            //this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
