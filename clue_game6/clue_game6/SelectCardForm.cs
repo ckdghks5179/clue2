@@ -22,6 +22,9 @@ namespace clue_game6
             cmbCardList.DisplayMember = "name";
         }
 
+
+
+
         private void btnChoice_Click(object sender, EventArgs e)
         {
             if (cmbCardList.SelectedItem is Card selected)
