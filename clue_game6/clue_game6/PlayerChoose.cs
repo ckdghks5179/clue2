@@ -77,6 +77,8 @@ namespace clue_game6
                 };
             }
 
+
+
             //카드 분배 로직 추가
             gameState.InitializeCards(); //카드 초기화 및 봉투에 정답 카드 넣기
             gameState.distributeCards(); //카드 나눠주기
