@@ -58,7 +58,6 @@ namespace clue_game6
             get { return name; }
             set { name = value; }
         }
-
     }
 
     public class PlayerNoteData
