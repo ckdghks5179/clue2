@@ -25,7 +25,7 @@ namespace clue_game6
             id = id_num;
             
 
-        }
+        }  
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -43,6 +43,9 @@ namespace clue_game6
                     player.isAlive = false;
                 this.Close();
             }
+
+
+
             else if(choose ==3)
             {
                     for(int i =0;i<player.hands.Count();i++)
