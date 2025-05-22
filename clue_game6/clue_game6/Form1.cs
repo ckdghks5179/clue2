@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using clue_game6;
+using System.Security.Cryptography;
 
 
 //https://github.com/ckdghks5179/clue_game
@@ -163,13 +164,15 @@ namespace clue_game6
             //방 진입 , 최종 방 진입 여부 판정
             Point dest = new Point(newY, newX); // 열, 행 순서
 
-            if (gameState.roomTiles.Contains(dest))
+            // ✅ 방 내부 or 입구 좌표일 경우 방 진입
+            if (gameState.roomTiles.Contains(dest) || gameState.clue_map[newX, newY] == 2)
             {
                 player.isInRoom = true;
                 player.isFinalRoom = false;
                 lbRemain.Text = "1";
             }
-            else if (gameState.finalRoomTiles.Contains(dest))
+            // ✅ 최종 추리 방 (입구 or 내부)
+            else if (gameState.finalRoomTiles.Contains(dest) || gameState.clue_map[newX, newY] == 5)
             {
                 player.isInRoom = false;
                 player.isFinalRoom = true;
@@ -180,6 +183,7 @@ namespace clue_game6
                 player.isInRoom = false;
                 player.isFinalRoom = false;
             }
+
 
             // 이전 위치가 방이면 clue_map을 2로, 아니면 0으로 되돌림
             if (gameState.clue_map[player.x, player.y] == 2 || gameState.clue_map[player.x, player.y] == 5)

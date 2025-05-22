@@ -105,7 +105,7 @@ namespace clue_game6
             new Point(8, 5), new Point(15, 5), new Point(4, 6), new Point(9, 7),
             new Point(13, 12),new Point(18, 13),new Point(11, 14),new Point(22, 13),
             new Point(20, 14),new Point(11, 15),new Point(17, 16),new Point(11, 18),new Point(12, 19),
-            new Point(18, 21)
+            new Point(18, 21), new Point(19,5)
         };
 
         public List<Point> finalRoomTiles = new List<Point> //최종추리방 문 좌표
