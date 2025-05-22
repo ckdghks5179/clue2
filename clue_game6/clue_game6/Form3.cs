@@ -23,8 +23,6 @@ namespace clue_game6
             choose = i;
             gameState = G;
             id = id_num;
-            
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -72,6 +70,7 @@ namespace clue_game6
                         {
                             var revealed = selectForm.SelectedCard;
                             gameState.AddLog($"→ Player {other.id + 1}가 반박했다.");
+                            //나중에 채팅 버전이랑 로그 버전이랑 다르게 할 부분
 
                             //보여주는 사람, 추리하는 사람만 알고 있어야 하는 정보
                             MessageBox.Show($"Player {other.id + 1}가 '{revealed.name}' 카드를 보여주었습니다."); 
@@ -111,7 +110,7 @@ namespace clue_game6
 
                 this.Close();
             }
-            else if(choose ==3)
+            else if(choose == 3)
             {
                     for(int i =0;i<player.hands.Count();i++)
                     {
