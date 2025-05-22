@@ -62,7 +62,7 @@ namespace clue_game6
                         current = (current + 1) % totalPlayers;
                         continue;
                     }
-
+                    //wntjr
                     var match = other.hands.Where(card => guessedNames.Contains(card.name)).ToList();
                     if (match.Count > 0)
                     {
